@@ -31,14 +31,19 @@ const Projects = ({ data }) => {
 };
 
 export async function getServerSideProps(context) {
-  let res = await fetch(
-    `https://api.github.com/search/repositories?q=user:${"akhtarfaizan20"}+fork:true&sort=updated&per_page=10&type=Repositories`
-  );
-  let data = await res.json();
+  try {
+    let res = await fetch(
+      `https://api.github.com/search/repositories?q=user:${"akhtarfaizan20"}+fork:true&sort=updated&per_page=10&type=Repositories`
+    );
+    let data = await res.json();
 
-  return {
-    props: { data: data.items }, // will be passed to the page component as props
-  };
+    return {
+      props: { data: data.items }, // will be passed to the page component as props
+    };
+  } catch (err) {
+    return {
+      props: { data: [] }, // will be passed to the page component as props
+    };
+  }
 }
-
 export default Projects;
