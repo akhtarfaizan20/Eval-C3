@@ -66,11 +66,19 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps(context) {
-  let res = await fetch(`https://api.github.com/users/akhtarfaizan20`);
-  let data = await res.json();
-  return {
-    props: {
-      data,
-    }, // will be passed to the page component as props
-  };
+  try {
+    let res = await fetch(`https://api.github.com/users/akhtarfaizan20`);
+    let data = await res.json();
+    return {
+      props: {
+        data: data || [],
+      }, // will be passed to the page component as props
+    };
+  } catch (err) {
+    return {
+      props: {
+        data: [],
+      },
+    };
+  }
 }
