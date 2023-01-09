@@ -1,4 +1,5 @@
 import { Box, HStack, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 import { AiFillFolder, AiOutlineStar } from "react-icons/ai";
 import { TbGitFork } from "react-icons/tb";
@@ -9,12 +10,15 @@ const ProjectCard = ({
   stargazers_count,
   forks_count,
   language,
+  html_url,
 }) => {
   return (
     <Box borderRadius={"10px"} boxShadow="base" p={"20px"}>
       <HStack>
         <AiFillFolder />
-        <Text as={"b"}>{name}</Text>
+        <Link href={html_url} target={"_blank"}>
+          <Text as={"b"}>{name}</Text>
+        </Link>
       </HStack>
       <Text fontSize={"sm"}>{description}</Text>
       <HStack justifyContent={"space-between"}>
