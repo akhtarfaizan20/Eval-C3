@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Skills from "../Components/Skills";
+import Education from "../Components/Education";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,6 +61,7 @@ export default function Home({ data }) {
           </Link>
         </VStack>
         <Skills />
+        <Education />
       </main>
     </>
   );
